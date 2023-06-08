@@ -9,12 +9,6 @@ export default {
         DEFAULT: "1rem",
       },
     },
-    colors: {
-      blue: "#0b5cff",
-      black: "#00031f",
-      green: "#00ede7",
-      white: "#ffffff",
-    },
   },
   plugins: [],
 };
