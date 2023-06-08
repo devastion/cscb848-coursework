@@ -18,7 +18,7 @@ function App() {
       setWeight(1000);
     } else {
       setWeightWarn(false);
-      setWeight(Number(value));
+      setWeight(Math.round(Number(value)));
     }
   }
 
@@ -29,13 +29,13 @@ function App() {
       setReps(15);
     } else {
       setRepsWarn(false);
-      setReps(Number(value));
+      setReps(Math.round(Number(value)));
     }
   }
 
   React.useEffect(() => {
     const maxFormula: number = useWeightDeferred / (1.0278 - 0.0278 * useRepsDeferred);
-    setMax(maxFormula.toFixed(2));
+    setMax(Math.round(maxFormula));
   }, [useWeightDeferred, useRepsDeferred]);
 
   return (
@@ -50,6 +50,7 @@ function App() {
           </label>
           {weightWarn && <div className="block text-xs font-medium text-red-700">Max weight is 1000kg</div>}
           <input
+            data-testid="weight"
             step={2.5}
             pattern="[0-9]*"
             id="weight"
@@ -65,8 +66,13 @@ function App() {
           <label htmlFor="reps" className="block text-xs font-medium text-gray-700">
             Repetitions
           </label>
-          {repsWarn && <div className="block text-xs font-medium text-red-700">Max repetition is 15</div>}
+          {repsWarn && (
+            <div data-testid="repswarn" className="block text-xs font-medium text-red-700">
+              Max repetition is 15
+            </div>
+          )}
           <input
+            data-testid="reps"
             pattern="[0-9]*"
             id="reps"
             name="reps"
@@ -80,7 +86,9 @@ function App() {
 
       <div className="mt-5">
         <h3 className=" text-center font-bold uppercase">Your one rep max is:</h3>
-        <div className="text-center text-5xl font-bold text-gray-900 sm:text-4xl">{max}</div>
+        <div className="text-center text-5xl font-bold text-gray-900 sm:text-4xl" data-testid="max">
+          {max}
+        </div>
       </div>
     </div>
   );

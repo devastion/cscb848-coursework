@@ -12,6 +12,6 @@ Simple calculator to estimate your one max repetition.
 
 - [X] Setup the project
 - [X] Implement the functionality of the calculator
-- [ ] Write unit tests for the functionality
+- [X] Write unit tests for the functionality
 - [X] Style the application
 - [X] Deploy the application
